@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Website</title>
+	<style>
+		body {
+			background-color: #333;
+			color: #fff;
+			font-family: 'Open Sans', sans-serif;
+			text-align: center; /* Center all text */
+			margin: 10% auto; /* Center the body */
+			max-width: 600px; /* Set a maximum width for the content */
+        }
+		
+		.button {
+			display: block; /* Change display to block */
+			width: 50%; /* Set width to 100% */
+			padding: 24px 24px;
+			background-color: #555;
+			color: #fff;
+			border-radius: 4px;
+			text-decoration: none;
+			font-size: 18px;
+			margin: 25px auto;
+			transition: background-color 0.3s ease;
+			transition: margin 0.3s ease;
+		}
+		
+		.button:hover {
+			background-color: #777;
+            margin: 40px auto;
+		}
+		#cursor {
+			position: fixed;
+			width: 10px;
+			height: 10px;
+			opacity: 50%;
+			border-radius: 100%;
+			background-color: rgba(255, 255, 255, 0.7);
+			pointer-events: none;
+			z-index: 9999;
+			transform: translate(-50%, -60%);
+			display: none;
+			box-shadow: 0 0 20px #fff;
+		}
+
+	</style>
+	<script>
+		document.addEventListener('mousemove', function(e) {
+		  var cursor = document.getElementById('cursor');
+		  cursor.style.top = e.clientY + 'px';
+		  cursor.style.left = e.clientX + 'px';
+		  cursor.style.display = 'block';
+		});
+	  
+		document.addEventListener('mouseleave', function(e) {
+		  var cursor = document.getElementById('cursor');
+		  cursor.style.display = 'none';
+		});
+	</script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	</head>
+<body>
+	<div id="cursor"></div>
+	<h1>Welcome to E-Voting System</h1>
+	<p>Choose an option below:</p>
+	<a href="/registration" class="button">Registration</a>
+	<a href="/signin" class="button">Sign In</a>
+	<a href="/admin" class="button">Admin</a>
+	<a href="/viewresults" class="button">View Results</a>
+</body>
+</html>

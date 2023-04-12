@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration - E-Voting System</title>
+	<style>
+		body {
+			background-color: #333;
+			color: #fff;
+			font-family: 'Open Sans', sans-serif;
+			text-align: center; /* Center all text */
+			margin: 10% auto; /* Center the body */
+			max-width: 600px; /* Set a maximum width for the content */
+		}
+		
+		.button {
+			display: block; /* Change display to block */
+			width: 50%; /* Set width to 100% */
+			padding: 24px 24px;
+			background-color: #555;
+			color: #fff;
+			border-radius: 4px;
+			text-decoration: none;
+			font-size: 18px;
+			margin: 25px auto;
+			transition: background-color 0.3s ease;
+			transition: margin 0.3s ease;
+		}
+		
+		.button:hover {
+			background-color: #777;
+            margin: 40px auto;
+		}
+		
+		#cursor {
+			position: fixed;
+			width: 10px;
+			height: 10px;
+			opacity: 50%;
+			border-radius: 100%;
+			background-color: rgba(255, 255, 255, 0.7);
+			pointer-events: none;
+			z-index: 9999;
+			transform: translate(-50%, -50%);
+			display: none;
+			box-shadow: 0 0 20px #fff;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		input[type=text], input[type=number] {
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: none;
+			border-radius: 4px;
+			background-color: #555;
+			color: #fff;
+		}
+
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+	</style>
+	<script>
+		document.addEventListener('mousemove', function(e) {
+		  var cursor = document.getElementById('cursor');
+		  cursor.style.top = e.clientY + 'px';
+		  cursor.style.left = e.clientX + 'px';
+		  cursor.style.display = 'block';
+		});
+	  
+		document.addEventListener('mouseleave', function(e) {
+		  var cursor = document.getElementById('cursor');
+		  cursor.style.display = 'none';
+		});
+	</script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<div id="cursor"></div>
+	<h1>Registration Form</h1>
+	<form action="#" method="POST" onsubmit="return generateVoterID()">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+		<label for="huid">HU ID:</label>
+		<input type="text" id="huid" name="huid" required>
+		<label for="batch">Batch Year:</label>
+		<input type="text" id="batch" name="batch" required>
+		<input type="submit" value="Register" class="button">
+	</form>
+	{% if voter_id %}
+        <p>Your unique voter ID is: {{voter_id}}</p>
+    {% endif %}
+	<div id="error-message"></div>
+	<a href="/" class="button">Back to Home</a>
+</body>
+</html>
